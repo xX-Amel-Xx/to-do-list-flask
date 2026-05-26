@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cartao">
+<h1>
+    <i class="bi bi-clipboard-check"></i>
+    Lista de tarefas
+</h1>
+
+ <form id="formulario">
+
+<input type="text" id= "p1"
+placeholder="Adicionar uma nova tarefa">
+
+<button class="bt1" type="submit">Adicionar</button>
+    </form>
+
+<div class="filtros">
+<h4 id="Dtodas">Todas</h4>
+<h4 id="Dpendentes">Pendentes</h4>
+<h4 id="Dconcluidas">Concluida</h4>
+
+
+</div>
+<div class="area-listas">
+<ul id="lista"></ul>
+<ul id="pendente"></ul>
+<ul id="concluida"></ul>
+</div>
+
+<p id="Tconcluidas"> 
+    0 tarefas concluidas
+</p>
+<button id="DeletarCl">🗑️ Deletar concluídas</button>
+</div>
+
+</body>
+ <script>
+
+//Pega o formulário do HTML.
+//“pegar elemento pelo id”. vira uma variável que guarda o formulário
+   const formulario=document.getElementById("formulario")
+
+//Pega o campo de texto.
+//Agora a variável input representa esse campo.
+const input =document.getElementById("p1")
+
+//listas filtros
+const listaTodas = document.getElementById("lista")
+const listaPendentes = document.getElementById("pendente")
+const listaConcluidas = document.getElementById("concluida")
+
+
+//botoes friltros
+// Pega a lista <ul> do HTML.
+const Dtodas =document.getElementById("Dtodas")
+// pega p campo concluida
+const Dconcluidas = document.getElementById("Dconcluidas")
+//pega o campo pendente
+const Dpendentes = document.getElementById("Dpendentes")
+
+//deletar tarefas concluidas
+const concluidas=document.getElementById("Tconcluidas")
+
+//Quando o formulário for enviado, execute essa função.
+// o addEventListener escuta eventos
+// o function(event)função executada quando o evento acontece
+formulario.addEventListener("submit", function(event){
+
+//Impede o formulário de recarregar a página.
+event.preventDefault()
+
+//Pega o valor digitado no input.
+const novaTarefa= input.value
+
+//Cria lista
+const item = document.createElement("li")
+//cria checkbox, um <input> novo.
+
+const checkbox=document.createElement ("input")
+//Transforma o input em checkbox.
+checkbox.type="checkbox"
+
+// cria texto
+const texto = document.createElement("span")
+//serve para colocar o texto digitado pelo usuário dentro do elemento <span>.
+texto.textContent= novaTarefa
+
+//  criando o botao deletar 
+const Botaodeletar = document.createElement("button")
+Botaodeletar.textContent="🗑️"
+
+//adicionando evento para o botao deletar 
+Botaodeletar.addEventListener("click", function(event){
+//removendo item
+item.remove()
+
+contador()
+
+})
+
+
+// para mover a tarefa 
+checkbox.addEventListener("change", function(){
+// criar uma estrutura de decisão para encaminhar a atividade para a aba de concluidas ou pendentes
+    if (checkbox.checked){
+          listaConcluidas.appendChild(item)
+    }else{
+        listaPendentes.appendChild(item)
+
+}
+
+contador()
+});
+
+// cria um contador para contar as atividades concluidas
+function contador(){
+    //children.length:Conta quantos elementos existem dentro da lista concluída
+    const total = listaConcluidas.children.length
+
+    if(total==1){
+    concluidas.textContent="1 tarefa concluída"
+    }else{
+    concluidas.textContent= total+" tarefas concluídas"
+
+}
+}
+contador()
+
+//botao para deletar as tarefas concluidas 
+// pegando o botão "Deletar concluidas" do Html
+// DeletarCl é o id desse botão
+const botao2=document.getElementById("DeletarCl")
+//adicionando evento para o botao deletar tarefas concluidas 
+botao2.addEventListener("click", function(event){
+//removendo item
+listaConcluidas.innerHTML = ""
+contador()
+})
+
+
+//checkbox, texto e botão devem ir dentro do item, não direto na lista.
+item.appendChild(checkbox)
+item.appendChild(texto)
+item.appendChild(Botaodeletar)
+listaTodas.appendChild(item)
+//adiciona o item na lista
+input.value=""
+})
+//evento para os filtros
+Dtodas.addEventListener("click",function(){
+listaTodas.style.display = "block"
+listaPendentes.style.display ="none"
+listaConcluidas.style.display ="none"
+
+})
+
+Dpendentes.addEventListener("click",function(){
+listaTodas.style.display="none"
+listaPendentes.style.display="block"
+listaConcluidas.style.display="none"
+})
+
+Dconcluidas.addEventListener("click",function(){
+listaTodas.style.display="none"
+listaPendentes.style.display="none"
+listaConcluidas.style.display="block"
+})
+
+/*
+item.textContent=novaTarefa
+lista.appendChild(item)
+input.value=""
+*/
+
+ </script>
+</body>
+</html>

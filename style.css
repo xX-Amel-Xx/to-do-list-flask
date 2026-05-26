@@ -1,0 +1,84 @@
+body{
+
+    margin: 0;
+    padding: 0;
+    background-color:#D2B48C;
+
+/* alinhando alguns elementos exemplo (botao)*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    }
+/*lista de tarefas*/
+h1{
+   
+    margin: 12px;
+    padding: 10px;
+   color:#8B4513
+}
+
+/*botão adicionar*/
+
+ .bt1{
+width: 25%;
+background-color:#D2B48C;
+padding: 6px;
+border-radius: 7px;
+outline: none;         
+ box-shadow: none; 
+
+/* -A borda existe, mas você não vê ela
+Isso permite mudar a cor depois (ex: no :hover)
+- cursor: pointer,  Muda o cursor do mouse pra aquela “mãozinha”
+-Cria uma animação suave*/
+
+ border: 2px solid transparent; /* invisível */
+    cursor: pointer;
+    transition: 0.2s;
+}
+/* Muda a cor do botão quando clicar e a borda ao selecionar o botão*/
+.bt1:hover {
+    border-color: #8B4513;
+}
+
+.bt1:active{
+    background-color: #a46d45;
+}
+
+
+#p1{
+width: 80%;
+  padding: 12px;
+border: 2px solid #d9beaa; /* invisível */
+ cursor: pointer;
+border-radius: 7px;
+
+}
+#p1:active{
+background:#f3eee1; 
+}
+/*para quando o usuário digitar dentro do input*/
+
+#p1:focus{
+outline: none;  /* remove a borda preta padrão */
+background-color: #f3eee1;
+}
+
+#formulario{
+     display: flex;
+    gap: 10px;
+padding: 10px;
+margin: 20px;
+}
+
+
+.cartao{
+background-color:#F5F5DC;
+padding: 10px;
+    border-radius: 15px;
+    width: 700px;
+      height: 500px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
