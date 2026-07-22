@@ -24,3 +24,8 @@ class Lista (db.Model):
         default=False,
         nullable=False
     )
+    todas =db.Column(
+        db.Boolean, 
+        default=False,
+        nullable=False,
+    )

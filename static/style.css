@@ -20,7 +20,7 @@ h1{
 
  .bt1{
 width: 25%;
-background-color:#f5e9da;
+background-color:#886b49;
 padding: 6px;
 border-radius: 7px;
 outline: none;         
@@ -102,13 +102,18 @@ display:none;
 
 .coluna{
     width: 30%;
+    
 }
-
+.conteudo-coluna{
+     height: 250px;
+    overflow-y: auto;
+}
 .item{
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 10px;
+    overflow-y: auto;
 }
 .botao-excluir{                   
 display: flex;
@@ -129,5 +134,29 @@ flex: 1;
 word-break: break-word;
 }
 
+.contConcluidas{
+text-align: right ;
+}
 
+.DeletarC{
+text-align: right ;
+}
 
+.bt2{ 
+background-color:#886b49;
+padding: 6px;
+border-radius: 7px;
+outline: none;         
+box-shadow: none; 
+border: 2px solid transparent; /* invisível */
+cursor: pointer;
+transition: 0.2s;
+ margin-left: 620px;
+}
+.bt2:hover {
+    border-color: #8B4513;
+}
+
+.bt2:active{
+    background-color: #a46d45;
+}

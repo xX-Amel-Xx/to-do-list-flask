@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
 <div class="cartao">
 <div class="titulos">
     <h1>
@@ -81,11 +82,16 @@
             {% endfor %}
         </div>
 
+
+
+    
+
         <!-- CONCLUÍDAS -->
         <div class="coluna">
             <h4>Concluídas</h4>
 
             {% for registro in concluidas %}
+         
             <div class="item">
 
                 <form action="/pendente/{{ registro.id }}" method="GET">
@@ -99,11 +105,20 @@
                     {{ registro.texto }}
                 </span>
             </div>
+    
             {% endfor %}
         </div>
 
     </div>
-
+  <div class="rodape">
+    <p class="contConcluidas">concluidas:{{quantidade}}</p>
+     <p class="DeletarC">Deletar concluidas</p>
+    <form action="/deletPen" method="POST">
+        <button class="bt2" type="submit">
+            Limpar
+        </button>
+   </form>
+    </div>
 </div>
 </body>
 </html>
