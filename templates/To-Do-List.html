@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="cartao">
+<div class="titulos">
+    <h1>
+        <i class="bi bi-clipboard-check"></i>
+        Lista de tarefas
+    </h1>
+
+    <form action="/tarefas" method="POST">
+        <input
+            type="text"
+            id="p1"
+            name="texto"
+            placeholder="Adicionar uma nova tarefa">
+
+        <button class="bt1" type="submit">
+            Adicionar
+        </button>
+    </form>
+</div>
+    <div class="listas">
+
+        <!-- TODAS -->
+        <div class="coluna">
+            <h4>Todas</h4>
+{% for registro in todas %}
+
+{% if not registro.concluida %}
+
+<div class="item">
+
+    <form action="/pendente/{{ registro.id }}" method="GET">
+        <input
+            type="checkbox"
+            onchange="this.form.submit()">
+    </form>
+
+    <span>{{ registro.texto }}</span>
+
+   <a href="/deletar/{{registro.id}}" class="botao-excluir">
+        <img src="/static/BotaoEx.png" alt="Excluir" class="icone-excluir">
+    </a>
+</div>
+
+{% endif %}
+
+{% endfor %}
+        </div>
+
+        <!-- PENDENTES -->
+        <div class="coluna">
+            <h4>Pendentes</h4>
+
+            {% for registro in pendentes %}
+            <div class="item">
+
+                <form action="/pendente/{{ registro.id }}" method="GET">
+                    <input
+                        type="checkbox"
+                        onchange="this.form.submit()">
+                </form>
+
+                <span class="texto-tarefa"
+                >{{ registro.texto }}</span>
+
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- CONCLUÍDAS -->
+        <div class="coluna">
+            <h4>Concluídas</h4>
+
+            {% for registro in concluidas %}
+            <div class="item">
+
+                <form action="/pendente/{{ registro.id }}" method="GET">
+                    <input
+                        type="checkbox"
+                        checked
+                        onchange="this.form.submit()">
+                </form>
+
+                <span>
+                    {{ registro.texto }}
+                </span>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>

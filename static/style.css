@@ -1,19 +1,16 @@
 body{
-
     margin: 0;
     padding: 0;
-    background-color:#D2B48C;
-
+    background-color:#c5b38c;
 /* alinhando alguns elementos exemplo (botao)*/
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 
-    }
+
+}
 /*lista de tarefas*/
 h1{
-   
     margin: 12px;
     padding: 10px;
    color:#8B4513
@@ -23,11 +20,12 @@ h1{
 
  .bt1{
 width: 25%;
-background-color:#D2B48C;
+background-color:#f5e9da;
 padding: 6px;
 border-radius: 7px;
 outline: none;         
  box-shadow: none; 
+ margin-top: 12px;
 
 /* -A borda existe, mas você não vê ela
 Isso permite mudar a cor depois (ex: no :hover)
@@ -73,12 +71,63 @@ padding: 10px;
 margin: 20px;
 }
 
-
 .cartao{
+margin-top: 50px;
 background-color:#F5F5DC;
 padding: 10px;
-    border-radius: 15px;
-    width: 700px;
-      height: 500px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+border-radius: 15px;
+width: 700px;
+height: 500px;
+flex-shrink: 0;
+box-sizing: border-box;
+display: flex;
+flex-direction: column;
 }
+
+.listas{
+display: flex;
+justify-content: center;
+align-items: flex-start;
+gap:170px;
+margin-top: 2px;
+margin-left: 15px;
+overflow-y: auto;
+height: 300px;
+scrollbar-width: none;
+}
+
+.listas::-webkit-scrollbar{
+display:none;
+}
+
+.coluna{
+    width: 30%;
+}
+
+.item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.botao-excluir{                   
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+  
+          
+}
+.icone-excluir{
+width: 24px;
+height: 24px;
+ 
+}
+.texto-tarefa{
+flex: 1;
+ min-width: 0;
+word-break: break-word;
+}
+
+
+
